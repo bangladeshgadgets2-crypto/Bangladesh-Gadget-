@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Smartphones Catalog</title>
+<style>
+  .logo-img{width:20px;height:20px;object-fit:contain;display:block}
+</style>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tabler-icons/2.44.0/iconfont/tabler-icons.min.css">
+<style>
+  :root{
+    --bg:#0e0f13;
+    --surface1:#16181f;
+    --surface2:#1d2029;
+    --border:#2a2e3a;
+    --border-strong:#3a3f4e;
+    --text-primary:#f2f3f7;
+    --text-secondary:#a7acbb;
+    --text-muted:#6b7080;
+    --accent:#7f77dd;
+  }
+  *{box-sizing:border-box}
+  body{
+    margin:0;
+    background:var(--bg);
+    color:var(--text-primary);
+    font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+    -webkit-font-smoothing:antialiased;
+  }
+  .wrap{max-width:480px;margin:0 auto;padding:20px 16px 60px}
+  header{display:flex;align-items:center;gap:10px;margin-bottom:18px}
+  header h1{font-size:19px;font-weight:600;margin:0}
+  header p{font-size:12px;color:var(--text-muted);margin:2px 0 0}
+  .brand-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}
+  .brand-card{
+    border:0.5px solid var(--border);
+    border-radius:14px;
+    padding:14px 12px;
+    background:var(--surface1);
+    text-align:left;
+    cursor:pointer;
+    color:inherit;
+    font:inherit;
+    display:flex;
+    flex-direction:column;
+    gap:8px;
+    transition:border-color .15s,background .15s;
+  }
+  .brand-card:hover{border-color:var(--border-strong);background:var(--surface2)}
+  .brand-card:active{transform:scale(.98)}
+  .brand-icon{
+    width:38px;height:38px;border-radius:10px;
+    display:flex;align-items:center;justify-content:center;
+    font-size:19px;
+  }
+  .brand-name{font-size:14px;font-weight:600;margin-top:2px}
+  .brand-count{font-size:12px;color:var(--text-muted)}
+  .top-row{display:flex;align-items:center;justify-content:space-between}
+  #modelView{display:none}
+  .model-header{display:flex;align-items:center;gap:10px;margin-bottom:14px}
+  .icon-btn{
+    width:36px;height:36px;border-radius:10px;border:0.5px solid var(--border);
+    background:var(--surface1);color:var(--text-primary);
+    display:flex;align-items:center;justify-content:center;cursor:pointer;flex-shrink:0;
+  }
+  .icon-btn:hover{background:var(--surface2)}
+  #modelBrandIcon{width:40px;height:40px;border-radius:11px;display:flex;align-items:center;justify-content:center;flex-shrink:0;font-size:19px}
+  #modelBrandName{font-size:16px;font-weight:600}
+  #modelCount{font-size:12px;color:var(--text-secondary)}
+  #filterInput,.price-input{
+    background:var(--surface1);
+    border:0.5px solid var(--border);
+    border-radius:9px;
+    color:var(--text-primary);
+    font-size:14px;
+    padding:9px 12px;
+  }
+  #filterInput{width:100%;margin-bottom:8px}
+  #filterInput::placeholder,.price-input::placeholder{color:var(--text-muted)}
+  #filterInput:focus,.price-input:focus{outline:none;border-color:var(--accent)}
+  .model-row{
+    display:flex;align-items:center;gap:10px;
+    padding:11px 6px;border-top:0.5px solid var(--border);
+    cursor:pointer;border-radius:8px;
+  }
+  .model-row:hover{background:var(--surface1)}
+  .price-input{width:76px;text-align:right}
+  .confirm-btn{
+    width:36px;height:36px;border-radius:9px;border:0.5px solid var(--border-strong);
+    background:var(--surface2);color:var(--text-primary);cursor:pointer;
+    display:flex;align-items:center;justify-content:center;flex-shrink:0;
+  }
+  .dot{width:6px;height:6px;border-radius:50%;flex-shrink:0}
+  .footnote{font-size:11px;color:var(--text-muted);text-align:center;margin-top:24px}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header>
+    <div style="width:38px;height:38px;border-radius:10px;background:var(--surface2);display:flex;align-items:center;justify-content:center;font-size:19px"><i class="ti ti-device-mobile" aria-hidden="true"></i></div>
+    <div>
+      <h1>Smartphones</h1>
+      <p id="headerSub">Choose a brand to price its models</p>
+    </div>
+  </header>
+
+  <div id="brandView">
+    <div class="brand-grid" id="brandGrid"></div>
+  </div>
+
+  <div id="modelView">
+    <div class="model-header">
+      <button class="icon-btn" id="backBtn" aria-label="Back to brands"><i class="ti ti-arrow-left" aria-hidden="true"></i></button>
+      <span id="modelBrandIcon"></span>
+      <div>
+        <div id="modelBrandName"></div>
+        <div id="modelCount"></div>
+      </div>
+    </div>
+    <input id="filterInput" type="text" placeholder="Search models">
+    <div id="modelRows"></div>
+  </div>
+
+  <p class="footnote">Prices save automatically in this browser.</p>
+</div>
+
+<script>
+var TINTS = {
+  orange:{bg:"#412402",fg:"#FAC775"},
+  red:{bg:"#501313",fg:"#F09595"},
+  blue:{bg:"#042C53",fg:"#85B7EB"},
+  yellow:{bg:"#412402",fg:"#EF9F27"},
+  violet:{bg:"#26215C",fg:"#AFA9EC"},
+  green:{bg:"#173404",fg:"#97C459"},
+  magenta:{bg:"#4B1528",fg:"#ED93B1"},
+  aqua:{bg:"#04342C",fg:"#5DCAA5"}
+};
+
+var BRANDS = [
+  {name:"Xiaomi", slug:"xiaomi", icon:"ti-bolt", tint:"orange", models:["Xiaomi 14 Ultra","Xiaomi 14 Pro","Xiaomi 14","Xiaomi 13T Pro","Xiaomi 13T","Xiaomi 13 Ultra","Xiaomi 13 Pro","Xiaomi 13","Xiaomi 12T Pro","Xiaomi 12T","Xiaomi 12 Pro","Xiaomi 12","Xiaomi 11T Pro","Xiaomi 11T","Redmi Note 13 Pro+","Redmi Note 13 Pro","Redmi Note 13","Redmi Note 12 Pro+","Redmi Note 12 Pro","Redmi Note 12","Redmi 13C","Redmi 12","Redmi 12C","Redmi A3","Redmi A2","Poco X6 Pro","Poco X6","Poco F6 Pro","Poco F6","Poco M6 Pro","Poco M6","Poco C65","Poco X5 Pro","Poco X5"]},
+  {name:"Apple", slug:"apple", icon:"ti-device-mobile", tint:"red", models:["iPhone 15 Pro Max","iPhone 15 Pro","iPhone 15 Plus","iPhone 15","iPhone 14 Pro Max","iPhone 14 Pro","iPhone 14 Plus","iPhone 14","iPhone 13 Pro Max","iPhone 13 Pro","iPhone 13","iPhone 13 Mini","iPhone 12 Pro Max","iPhone 12 Pro","iPhone 12","iPhone 12 Mini","iPhone 11 Pro Max","iPhone 11 Pro","iPhone 11","iPhone XS Max","iPhone XS","iPhone XR","iPhone X","iPhone SE 2022","iPhone SE 2020","iPhone 8 Plus","iPhone 8","iPhone 7 Plus","iPhone 7","iPhone 6s Plus","iPhone 6s","iPhone 6 Plus","iPhone 6"]},
+  {name:"Huawei", slug:"huawei", icon:"ti-antenna-bars-5", tint:"blue", models:["Huawei Mate 60 Pro","Huawei Mate 60","Huawei Mate 50 Pro","Huawei Mate 50","Huawei Mate 40 Pro","Huawei Mate 40","Huawei Mate 30 Pro","Huawei Mate 30","Huawei P60 Pro","Huawei P60","Huawei P50 Pro","Huawei P50","Huawei P40 Pro","Huawei P40","Huawei P30 Pro","Huawei P30","Huawei Nova 12","Huawei Nova 11","Huawei Nova 10","Huawei Nova 9","Huawei Nova 8","Huawei Mate X3","Huawei Mate Xs 2","Huawei Y9 Prime","Huawei Y9s","Huawei Y7a","Huawei Y6p","Huawei P Smart 2021","Huawei P Smart Z","Huawei Enjoy 60"]},
+  {name:"Realme", slug:"realme", icon:"ti-flame", tint:"yellow", models:["Realme GT 5","Realme GT Neo 5","Realme GT 2 Pro","Realme GT Master","Realme 12 Pro+","Realme 12 Pro","Realme 12","Realme 11 Pro+","Realme 11 Pro","Realme 11","Realme 10 Pro+","Realme 10 Pro","Realme 10","Realme 9 Pro+","Realme 9 Pro","Realme 9","Realme 8 Pro","Realme 8","Realme C67","Realme C55","Realme C53","Realme C51","Realme C35","Realme C33","Realme C30","Realme Narzo 60","Realme Narzo 60 Pro","Realme Narzo 50","Realme Narzo 50A","Realme Narzo 50i"]},
+  {name:"One Plus", slug:"oneplus", icon:"ti-infinity", tint:"violet", models:["OnePlus Open","OnePlus 12","OnePlus 12R","OnePlus 11","OnePlus 11R","OnePlus 10 Pro","OnePlus 10T","OnePlus 10R","OnePlus 9 Pro","OnePlus 9","OnePlus 9R","OnePlus 9RT","OnePlus 8 Pro","OnePlus 8","OnePlus 8T","OnePlus 7 Pro","OnePlus 7T","OnePlus 7T Pro","OnePlus 6","OnePlus 6T","OnePlus Nord 3","OnePlus Nord 2T","OnePlus Nord CE 3","OnePlus Nord CE 3 Lite","OnePlus Nord CE","OnePlus Nord N30","OnePlus Nord N20","OnePlus Nord","OnePlus Ace 3","OnePlus Ace 2"]},
+  {name:"Samsung", slug:"samsung", icon:"ti-square-rounded", tint:"blue", models:["Galaxy S24 Ultra","Galaxy S24+","Galaxy S24","Galaxy S23 Ultra","Galaxy S23+","Galaxy S23","Galaxy S22 Ultra","Galaxy S22+","Galaxy S22","Galaxy S21 Ultra","Galaxy S21+","Galaxy S21 FE","Galaxy S20 FE","Galaxy Note 20 Ultra","Galaxy Note 20","Galaxy Z Fold5","Galaxy Z Flip5","Galaxy Z Fold4","Galaxy Z Flip4","Galaxy A54","Galaxy A34","Galaxy A25","Galaxy A15","Galaxy A05s","Galaxy A05","Galaxy M14","Galaxy M34","Galaxy F14","Galaxy Xcover6 Pro","Galaxy A73"]},
+  {name:"Google", slug:"google", icon:"ti-circle-dot", tint:"green", models:["Pixel Fold","Pixel 8 Pro","Pixel 8","Pixel 8a","Pixel 7 Pro","Pixel 7","Pixel 7a","Pixel 6 Pro","Pixel 6","Pixel 6a","Pixel 5","Pixel 5a","Pixel 4 XL","Pixel 4","Pixel 4a","Pixel 4a 5G","Pixel 3 XL","Pixel 3","Pixel 3a","Pixel 3a XL","Pixel 2 XL","Pixel 2","Pixel XL","Pixel"]},
+  {name:"Vivo", slug:"vivo", icon:"ti-camera", tint:"magenta", models:["Vivo X100 Pro","Vivo X100","Vivo X90 Pro+","Vivo X90 Pro","Vivo X90","Vivo X80 Pro","Vivo X80","Vivo V29 Pro","Vivo V29","Vivo V27 Pro","Vivo V27","Vivo V25 Pro","Vivo V25","Vivo Y100","Vivo Y36","Vivo Y27","Vivo Y17s","Vivo Y21","Vivo Y21T","Vivo Y16","Vivo Y02","Vivo Y02t","iQOO 12","iQOO 11","iQOO Neo 9","iQOO Z9","iQOO Z7","Vivo T2 Pro","Vivo T2x","Vivo S17 Pro"]},
+  {name:"Lg", slug:"lg", icon:"ti-device-tv", tint:"aqua", models:["LG Wing","LG Velvet","LG G8 ThinQ","LG G7 ThinQ","LG V60 ThinQ","LG V50 ThinQ","LG V40 ThinQ","LG V35 ThinQ","LG G6","LG G5","LG Q70","LG Q60","LG K92","LG K61","LG K51","LG K41S","LG K22","LG K12+","LG Stylo 6","LG Stylo 5","LG Aristo 5","LG Aristo 4+","LG Tribute Royal","LG Fortune 3","LG Reflect","LG Harmony 4","LG Phoenix 5","LG Premier Pro Plus","LG Xpression Plus 3","LG K8+"]},
+  {name:"Tecno", slug:"tecno", icon:"ti-cpu", tint:"orange", models:["Tecno Phantom X2 Pro","Tecno Phantom X2","Tecno Phantom V Fold","Tecno Camon 30 Pro","Tecno Camon 30","Tecno Camon 20 Pro","Tecno Camon 20","Tecno Camon 19 Pro","Tecno Camon 19","Tecno Camon 18","Tecno Camon 18 Premier","Tecno Spark 20 Pro","Tecno Spark 20","Tecno Spark 10 Pro","Tecno Spark 10","Tecno Spark 9","Tecno Spark 9T","Tecno Spark 8","Tecno Spark 8C","Tecno Spark Go 2023","Tecno Pova 5 Pro","Tecno Pova 5","Tecno Pova 4","Tecno Pova Neo 2","Tecno Pova Neo","Tecno Pop 9","Tecno Pop 7 Pro","Tecno Pop 7","Tecno Pop 6 Pro","Tecno Pop 5"]},
+  {name:"Motorola", slug:"motorola", icon:"ti-radio", tint:"red", models:["Moto Razr 40 Ultra","Moto Razr 40","Moto Razr 2022","Moto Edge 40 Pro","Moto Edge 40","Moto Edge 30 Pro","Moto Edge 30","Moto Edge 20","Moto G84","Moto G73","Moto G54","Moto G34","Moto G14","Moto G Power 2023","Moto G Stylus 2023","Moto G100","Moto G60","Moto G50","Moto E13","Moto E22","Moto E32","One 5G Ace","One Fusion+","Moto G9 Power","Moto G9 Play","Moto G8 Power","Moto G7 Power","Moto Z4","Moto G Pure","Moto G Play 2023"]},
+  {name:"Asus", slug:"asus", icon:"ti-device-gamepad-2", tint:"violet", models:["ROG Phone 8 Pro","ROG Phone 8","ROG Phone 7 Ultimate","ROG Phone 7","ROG Phone 6D","ROG Phone 6 Pro","ROG Phone 6","ROG Phone 5s Pro","ROG Phone 5s","ROG Phone 5","ROG Phone 3","ROG Phone 2","Zenfone 10","Zenfone 9","Zenfone 8","Zenfone 8 Flip","Zenfone 7 Pro","Zenfone 7","Zenfone 6","Zenfone 5Z","Zenfone 5","Zenfone AR","Zenfone Max Pro M2","Zenfone Max M2","Zenfone Live L2","Zenfone 4 Max","Zenfone 4 Selfie","Zenfone 4","Zenfone Zoom","PadFone S"]}
+];
+
+var STORAGE_KEY = "phoneAccessoriesPrices";
+var prices = {};
+try {
+  var saved = localStorage.getItem(STORAGE_KEY);
+  if (saved) prices = JSON.parse(saved);
+} catch (e) { prices = {}; }
+
+function savePrices(){
+  try { localStorage.setItem(STORAGE_KEY, JSON.stringify(prices)); }
+  catch (e) { }
+}
+
+var brandView = document.getElementById("brandView");
+var modelView = document.getElementById("modelView");
+var brandGrid = document.getElementById("brandGrid");
+var modelRows = document.getElementById("modelRows");
+var filterInput = document.getElementById("filterInput");
+var headerSub = document.getElementById("headerSub");
+var currentBrand = null;
+var openModel = null;
+
+function makeBrandIcon(b, size){
+  var t = TINTS[b.tint];
+  var wrap = document.createElement("span");
+  wrap.style.cssText = "width:"+size+"px;height:"+size+"px;border-radius:"+Math.round(size*0.28)+"px;display:flex;align-items:center;justify-content:center;flex-shrink:0;background:"+t.bg+";color:"+t.fg;
+  var img = document.createElement("img");
+  img.src = "https://cdn.simpleicons.org/"+b.slug+"/ffffff";
+  img.alt = b.name+" logo";
+  img.style.width = Math.round(size*0.52)+"px";
+  img.style.height = Math.round(size*0.52)+"px";
+  img.style.objectFit = "contain";
+  img.style.display = "block";
+  img.onerror = function(){
+    wrap.innerHTML = '<i class="ti '+b.icon+'" style="font-size:'+Math.round(size*0.5)+'px" aria-hidden="true"></i>';
+  };
+  wrap.appendChild(img);
+  return wrap;
+}
+
+BRANDS.forEach(function(b, i){
+  var card = document.createElement("button");
+  card.className = "brand-card";
+  var priced = b.models.filter(function(m){ return prices[b.name+"|"+m]; }).length;
+  var top = document.createElement("div");
+  top.className = "top-row";
+  top.appendChild(makeBrandIcon(b, 38));
+  var arrow = document.createElement("i");
+  arrow.className = "ti ti-arrow-up-right";
+  arrow.style.cssText = "font-size:15px;color:var(--text-muted)";
+  arrow.setAttribute("aria-hidden", "true");
+  top.appendChild(arrow);
+  card.appendChild(top);
+  var nameEl = document.createElement("div");
+  nameEl.className = "brand-name";
+  nameEl.textContent = b.name;
+  card.appendChild(nameEl);
+  var countEl = document.createElement("div");
+  countEl.className = "brand-count";
+  countEl.setAttribute("data-count", "");
+  countEl.textContent = priced + " of " + b.models.length + " priced";
+  card.appendChild(countEl);
+  card.addEventListener("click", function(){ openBrand(i); });
+  brandGrid.appendChild(card);
+});
+
+function openBrand(i){
+  var b = BRANDS[i];
+  currentBrand = b;
+  openModel = null;
+  document.getElementById("modelBrandName").textContent = b.name;
+  document.getElementById("modelCount").textContent = b.models.length + " models";
+  var iconSlot = document.getElementById("modelBrandIcon");
+  iconSlot.style.background = "none";
+  iconSlot.innerHTML = "";
+  iconSlot.appendChild(makeBrandIcon(b, 40));
+  filterInput.value = "";
+  renderModels("");
+  brandView.style.display = "none";
+  modelView.style.display = "block";
+}
+
+function priceKey(m){ return currentBrand.name + "|" + m; }
+
+function renderModels(filter){
+  modelRows.innerHTML = "";
+  var f = filter.toLowerCase();
+  var t = TINTS[currentBrand.tint];
+  currentBrand.models.filter(function(m){ return m.toLowerCase().indexOf(f) !== -1; }).forEach(function(m){
+    var key = priceKey(m);
+    var has = prices[key] !== undefined && prices[key] !== "";
+    var row = document.createElement("div");
+    row.className = "model-row";
+    if (openModel === m) {
+      row.style.cursor = "default";
+      row.innerHTML =
+        '<span class="dot" style="background:'+t.fg+'"></span>' +
+        '<span style="flex:1;font-size:14px;font-weight:600">'+m+'</span>' +
+        '<span style="font-size:13px;color:var(--text-muted)">$</span>' +
+        '<input type="number" min="0" placeholder="0" value="'+(prices[key]||"")+'" class="price-input" id="edit-input" aria-label="Price for '+m+'">' +
+        '<button class="confirm-btn" data-save aria-label="Confirm price"><i class="ti ti-check" aria-hidden="true"></i></button>';
+      var saveBtn = row.querySelector("[data-save]");
+      var input = row.querySelector("#edit-input");
+      var commit = function(){
+        prices[key] = input.value;
+        savePrices();
+        openModel = null;
+        renderModels(filterInput.value);
+        refreshBrandCount();
+      };
+      saveBtn.addEventListener("click", function(e){ e.stopPropagation(); commit(); });
+      input.addEventListener("keydown", function(e){ if (e.key === "Enter") commit(); });
+    } else {
+      row.innerHTML =
+        '<span class="dot" style="background:'+t.fg+'"></span>' +
+        '<span style="flex:1;font-size:14px">'+m+'</span>' +
+        (has ? '<span style="font-size:14px;font-weight:600">$'+prices[key]+'</span>' : '<span style="font-size:13px;color:var(--text-muted)">Set price</span>') +
+        '<i class="ti ti-chevron-right" style="font-size:15px;color:var(--text-muted)" aria-hidden="true"></i>';
+      row.addEventListener("click", function(){ openModel = m; renderModels(filterInput.value); });
+    }
+    modelRows.appendChild(row);
+  });
+  if (openModel) {
+    var sel = modelRows.querySelector("#edit-input");
+    if (sel) sel.focus();
+  }
+}
+
+function refreshBrandCount(){
+  var cards = brandGrid.querySelectorAll(".brand-card");
+  cards.forEach(function(card, i){
+    var b = BRANDS[i];
+    var priced = b.models.filter(function(m){ return prices[b.name+"|"+m]; }).length;
+    card.querySelector("[data-count]").textContent = priced + " of " + b.models.length + " priced";
+  });
+}
+
+filterInput.addEventListener("input", function(){ renderModels(filterInput.value); });
+
+document.getElementById("backBtn").addEventListener("click", function(){
+  modelView.style.display = "none";
+  brandView.style.display = "block";
+});
+</script>
+</body>
+</html>
