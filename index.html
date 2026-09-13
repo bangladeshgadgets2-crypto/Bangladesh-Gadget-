@@ -3,495 +3,485 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Bangladesh Gadget — Genuine Electronics, Shipped Direct from the USA</title>
+<title>Bangladesh Gadget — Genuine US Electronics, Delivered Home</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 <style>
   :root{
-    --navy: #0B1220;
-    --navy-2: #121B30;
-    --navy-3: #1B2A47;
-    --amber: #F2A93B;
-    --amber-dim: #C98A2C;
-    --teal: #34D9C4;
-    --paper: #F6F3EC;
-    --ink: #0B1220;
-    --line: rgba(246,243,236,0.14);
-    --line-soft: rgba(11,18,32,0.10);
-    --green: #1E8449;
+    --navy: #0E1B33;
+    --navy-2: #16294A;
+    --amber: #E2A63B;
+    --amber-deep: #C88A1F;
+    --cream: #F6F4EF;
+    --ink: #1A2233;
+    --slate: #5B647A;
+    --line: #E3DFD5;
+    --green: #2E7D5B;
+    --white: #FFFFFF;
+    --radius: 10px;
   }
-  *{margin:0;padding:0;box-sizing:border-box;}
+  *{box-sizing:border-box; margin:0; padding:0;}
   html{scroll-behavior:smooth;}
   body{
     font-family:'Inter', sans-serif;
-    background:var(--paper);
+    background:var(--cream);
     color:var(--ink);
     line-height:1.5;
-    overflow-x:hidden;
   }
-  h1,h2,h3,.display{
-    font-family:'Space Grotesk', sans-serif;
-    font-weight:600;
-    letter-spacing:-0.01em;
-  }
-  a{color:inherit;text-decoration:none;}
-  img,svg{display:block;max-width:100%;}
-  .wrap{max-width:1180px;margin:0 auto;padding:0 28px;}
-  section{padding:96px 0;}
-  @media (max-width:720px){ section{padding:64px 0;} .wrap{padding:0 20px;} }
+  h1,h2,h3,.brand{ font-family:'Space Grotesk', sans-serif; }
+  a{color:inherit; text-decoration:none;}
+  img,svg{display:block; max-width:100%;}
+  .wrap{max-width:1180px; margin:0 auto; padding:0 24px;}
+  ul{list-style:none;}
 
-  /* ---------- NAV ---------- */
+  /* Header */
   header{
-    position:sticky;top:0;z-index:50;
+    position:sticky; top:0; z-index:50;
     background:var(--navy);
-    border-bottom:1px solid var(--line);
+    border-bottom:1px solid rgba(255,255,255,0.08);
   }
-  .navbar{
-    display:flex;align-items:center;justify-content:space-between;
-    padding:16px 28px;max-width:1180px;margin:0 auto;color:var(--paper);
+  .topbar{
+    display:flex; align-items:center; justify-content:space-between;
+    padding:16px 0; gap:24px;
   }
-  .brand{display:flex;align-items:center;gap:12px;}
-  .brand-mark{width:38px;height:38px;flex-shrink:0;}
-  .brand-text{display:flex;flex-direction:column;line-height:1.1;}
-  .brand-text .name{font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:1.05rem;color:var(--paper);}
-  .brand-text .tag{font-size:0.65rem;color:var(--teal);letter-spacing:0.04em;}
-  nav.links{display:flex;gap:32px;font-size:0.92rem;}
-  nav.links a{color:rgba(246,243,236,0.8);transition:color .15s;}
-  nav.links a:hover{color:var(--amber);}
-  .nav-cta{display:flex;gap:12px;align-items:center;}
+  .brand{color:var(--white); font-size:20px; font-weight:700; display:flex; align-items:center; gap:10px; white-space:nowrap;}
+  .brand .dot{width:9px;height:9px;border-radius:50%;background:var(--amber);}
+  .search{
+    flex:1; max-width:520px; display:flex;
+    background:var(--white); border-radius:8px; overflow:hidden;
+  }
+  .search input{
+    flex:1; border:none; outline:none; padding:11px 14px; font-family:'Inter'; font-size:14px;
+  }
+  .search button{
+    background:var(--amber); border:none; padding:0 18px; cursor:pointer; font-weight:600; color:var(--navy);
+  }
+  .nav-actions{display:flex; align-items:center; gap:22px; color:var(--white); font-size:14px;}
+  .nav-actions a{opacity:0.9;}
+  .nav-actions a:hover{opacity:1;}
+  .track-pill{
+    background:rgba(226,166,59,0.15); border:1px solid var(--amber);
+    color:var(--amber); padding:7px 14px; border-radius:20px; font-size:13px; font-weight:600;
+  }
+  .subnav{
+    background:var(--navy-2); overflow-x:auto; white-space:nowrap;
+  }
+  .subnav .wrap{display:flex; gap:26px; padding:11px 24px; font-size:13.5px; color:rgba(255,255,255,0.85);}
+  .subnav a:hover{color:var(--amber);}
+
+  /* Hero */
+  .hero{ padding:64px 0 48px; background:var(--cream);}
+  .hero .wrap{ display:grid; grid-template-columns:1.1fr 0.9fr; gap:56px; align-items:center;}
+  .badge-guarantee{
+    display:inline-flex; align-items:center; gap:8px;
+    background:var(--white); border:1px solid var(--line); border-radius:30px;
+    padding:8px 16px; font-size:13px; font-weight:600; color:var(--green); margin-bottom:22px;
+  }
+  .hero h1{
+    font-size:44px; line-height:1.12; letter-spacing:-0.01em; color:var(--navy); margin-bottom:18px;
+  }
+  .hero p.lead{ font-size:16.5px; color:var(--slate); max-width:480px; margin-bottom:28px;}
+  .hero-cta{ display:flex; gap:14px; margin-bottom:34px; flex-wrap:wrap;}
   .btn{
-    display:inline-flex;align-items:center;gap:8px;
-    padding:11px 20px;border-radius:8px;font-size:0.9rem;font-weight:600;
-    border:1px solid transparent;cursor:pointer;transition:transform .15s, background .15s;
+    display:inline-block; padding:14px 26px; border-radius:8px; font-weight:600; font-size:15px; cursor:pointer; border:none;
   }
-  .btn-amber{background:var(--amber);color:var(--navy);}
-  .btn-amber:hover{background:#ffbf5c;}
-  .btn-outline{border-color:rgba(246,243,236,0.3);color:var(--paper);}
-  .btn-outline:hover{border-color:var(--amber);color:var(--amber);}
-  .menu-toggle{display:none;background:none;border:0;color:var(--paper);font-size:1.6rem;cursor:pointer;}
-  @media (max-width:860px){
-    nav.links{display:none;}
-    .nav-cta .btn-outline{display:none;}
-    .menu-toggle{display:block;}
-  }
+  .btn-primary{ background:var(--amber); color:var(--navy); }
+  .btn-primary:hover{ background:var(--amber-deep); }
+  .btn-ghost{ background:transparent; border:1.5px solid var(--navy); color:var(--navy); }
+  .btn-ghost:hover{ background:var(--navy); color:var(--white); }
+  .hero-stats{ display:flex; gap:34px; flex-wrap:wrap;}
+  .hero-stats div strong{ display:block; font-size:22px; color:var(--navy); font-family:'Space Grotesk';}
+  .hero-stats div span{ font-size:12.5px; color:var(--slate);}
 
-  /* ---------- HERO ---------- */
-  .hero{
-    background:linear-gradient(180deg, var(--navy) 0%, var(--navy-2) 100%);
-    color:var(--paper);
-    padding:88px 0 0;
-    position:relative;
-  }
-  .hero-grid{
-    display:grid;grid-template-columns:1.05fr 0.95fr;gap:56px;align-items:center;
-  }
-  @media (max-width:900px){ .hero-grid{grid-template-columns:1fr;gap:40px;} }
-  .eyebrow-badge{
-    display:inline-flex;align-items:center;gap:8px;
-    background:rgba(52,217,196,0.12);border:1px solid rgba(52,217,196,0.35);
-    color:var(--teal);font-size:0.8rem;font-weight:600;
-    padding:6px 12px;border-radius:100px;margin-bottom:22px;
-  }
-  .hero h1{font-size:clamp(2.1rem, 4.2vw, 3.4rem);line-height:1.08;margin-bottom:22px;}
-  .hero p.lead{font-size:1.08rem;color:rgba(246,243,236,0.78);max-width:520px;margin-bottom:32px;}
-  .hero-actions{display:flex;gap:14px;margin-bottom:56px;flex-wrap:wrap;}
-
-  /* shipment route visual */
   .route-card{
-    background:var(--navy-3);border:1px solid var(--line);border-radius:16px;
-    padding:28px 26px 30px;
+    background:var(--navy); border-radius:16px; padding:30px 28px; color:var(--white); position:relative; overflow:hidden;
   }
-  .route-card .route-head{display:flex;justify-content:space-between;align-items:baseline;margin-bottom:22px;}
-  .route-card .route-head .label{font-size:0.78rem;color:rgba(246,243,236,0.55);text-transform:uppercase;letter-spacing:0.06em;}
-  .route-card .route-head .id{font-family:'Space Grotesk',sans-serif;font-size:0.85rem;color:var(--teal);}
-  .route-line{position:relative;height:150px;margin:0 6px 18px;}
-  .route-track{position:absolute;top:38px;left:0;right:0;height:2px;background:rgba(246,243,236,0.16);}
-  .route-track .fill{position:absolute;top:0;left:0;height:2px;background:var(--teal);width:62%;}
-  .route-points{position:absolute;top:0;left:0;right:0;display:flex;justify-content:space-between;}
-  .route-point{display:flex;flex-direction:column;align-items:center;width:70px;text-align:center;}
-  .route-point .dot{width:14px;height:14px;border-radius:50%;background:var(--navy-3);border:2px solid rgba(246,243,236,0.35);margin-bottom:30px;z-index:2;}
-  .route-point.done .dot{background:var(--teal);border-color:var(--teal);}
-  .route-point.active .dot{background:var(--amber);border-color:var(--amber);box-shadow:0 0 0 5px rgba(242,169,59,0.2);}
-  .route-point .stage{font-size:0.68rem;color:rgba(246,243,236,0.65);line-height:1.25;}
-  .route-point.done .stage, .route-point.active .stage{color:var(--paper);font-weight:600;}
-  .route-foot{display:flex;justify-content:space-between;font-size:0.78rem;color:rgba(246,243,236,0.55);border-top:1px solid var(--line);padding-top:16px;}
-  .route-foot b{color:var(--paper);font-weight:600;}
+  .route-card::after{
+    content:""; position:absolute; inset:0;
+    background:radial-gradient(circle at 80% 0%, rgba(226,166,59,0.18), transparent 55%);
+  }
+  .route-title{ font-size:13px; letter-spacing:0.02em; color:rgba(255,255,255,0.65); margin-bottom:22px; position:relative;}
+  .route-line{ position:relative; height:150px; margin-bottom:6px;}
+  .route-line svg{ width:100%; height:100%;}
+  .route-points{ display:flex; justify-content:space-between; font-size:13px; font-weight:600; position:relative;}
+  .route-points span.city{display:block; font-size:12px; font-weight:400; color:rgba(255,255,255,0.6); margin-top:3px;}
+  .route-note{
+    margin-top:24px; padding-top:20px; border-top:1px solid rgba(255,255,255,0.12);
+    font-size:13px; color:rgba(255,255,255,0.75); position:relative; display:flex; justify-content:space-between; gap:12px;
+  }
 
-  .hero-strip{
-    border-top:1px solid var(--line);
-    display:grid;grid-template-columns:repeat(3,1fr);
-  }
-  @media (max-width:720px){ .hero-strip{grid-template-columns:1fr;} }
-  .hero-strip .cell{
-    padding:26px 28px;border-right:1px solid var(--line);
-    display:flex;gap:14px;align-items:flex-start;
-  }
-  .hero-strip .cell:last-child{border-right:none;}
-  @media (max-width:720px){ .hero-strip .cell{border-right:none;border-bottom:1px solid var(--line);} }
-  .hero-strip svg{flex-shrink:0;margin-top:2px;}
-  .hero-strip .t{font-size:0.92rem;font-weight:600;color:var(--paper);margin-bottom:4px;}
-  .hero-strip .d{font-size:0.82rem;color:rgba(246,243,236,0.6);}
+  /* Trust bar */
+  .trustbar{ background:var(--navy-2); padding:26px 0;}
+  .trustbar .wrap{ display:grid; grid-template-columns:repeat(4,1fr); gap:22px;}
+  .trust-item{ display:flex; gap:12px; align-items:flex-start; color:var(--white);}
+  .trust-item .ic{ width:34px; height:34px; flex:none;}
+  .trust-item h4{ font-size:14px; font-weight:600; margin-bottom:3px;}
+  .trust-item p{ font-size:12.5px; color:rgba(255,255,255,0.65); line-height:1.4;}
 
-  /* ---------- SECTION HEADERS ---------- */
-  .sec-head{max-width:620px;margin-bottom:48px;}
-  .sec-head h2{font-size:clamp(1.6rem,2.6vw,2.1rem);margin-bottom:12px;}
-  .sec-head p{color:#4b5566;font-size:1rem;}
+  /* Section heading */
+  .section{ padding:64px 0;}
+  .section-head{ display:flex; justify-content:space-between; align-items:flex-end; margin-bottom:32px; gap:20px; flex-wrap:wrap;}
+  .section-head h2{ font-size:28px; color:var(--navy);}
+  .section-head p{ color:var(--slate); font-size:14.5px; max-width:420px;}
 
-  /* ---------- CATALOG ---------- */
-  .cat-grid{
-    display:grid;grid-template-columns:repeat(4,1fr);gap:2px;
-    background:var(--line-soft);border:1px solid var(--line-soft);
+  /* Categories */
+  .cat-grid{ display:grid; grid-template-columns:repeat(4,1fr); gap:18px;}
+  .cat-card{
+    background:var(--white); border:1px solid var(--line); border-radius:12px; padding:22px 18px;
+    display:flex; flex-direction:column; gap:14px; transition:border-color .15s, transform .15s;
   }
-  @media (max-width:900px){ .cat-grid{grid-template-columns:repeat(3,1fr);} }
-  @media (max-width:600px){ .cat-grid{grid-template-columns:repeat(2,1fr);} }
-  .cat-tile{
-    background:#fff;padding:30px 20px;display:flex;flex-direction:column;gap:14px;
-    transition:background .15s;
-  }
-  .cat-tile:hover{background:#FBF4E6;}
-  .cat-tile .icon{width:40px;height:40px;color:var(--navy);}
-  .cat-tile:hover .icon{color:var(--amber-dim);}
-  .cat-tile .name{font-weight:600;font-size:0.95rem;}
-  .cat-tile .count{font-size:0.78rem;color:#7a8494;}
+  .cat-card:hover{ border-color:var(--amber); transform:translateY(-3px);}
+  .cat-ic{ width:42px; height:42px;}
+  .cat-card h3{ font-size:15.5px; color:var(--navy);}
+  .cat-card span{ font-size:12.5px; color:var(--slate);}
 
-  /* ---------- TRACKING ---------- */
-  .track-section{background:var(--navy);color:var(--paper);}
-  .track-section .sec-head p{color:rgba(246,243,236,0.65);}
-  .track-section .sec-head h2{color:var(--paper);}
-  .track-steps{
-    display:grid;grid-template-columns:repeat(6,1fr);gap:0;
-    border-top:1px solid var(--line);border-bottom:1px solid var(--line);
+  /* How it works */
+  .steps{ background:var(--white);}
+  .step-grid{ display:grid; grid-template-columns:repeat(4,1fr); gap:0; position:relative;}
+  .step{ padding:0 20px; position:relative;}
+  .step:not(:last-child)::after{
+    content:""; position:absolute; top:22px; right:-10%; width:20%; height:1px; background:var(--line);
   }
-  @media (max-width:900px){ .track-steps{grid-template-columns:repeat(3,1fr);} }
-  @media (max-width:560px){ .track-steps{grid-template-columns:repeat(2,1fr);} }
-  .track-step{
-    padding:26px 18px;border-right:1px solid var(--line);border-bottom:1px solid var(--line);
+  .step-num{
+    width:44px; height:44px; border-radius:50%; background:var(--navy); color:var(--amber);
+    display:flex; align-items:center; justify-content:center; font-family:'Space Grotesk'; font-weight:700; margin-bottom:16px;
   }
-  .track-step .num{font-family:'Space Grotesk',sans-serif;color:var(--amber);font-size:0.85rem;margin-bottom:10px;}
-  .track-step .tt{font-weight:600;font-size:0.92rem;margin-bottom:6px;}
-  .track-step .dd{font-size:0.8rem;color:rgba(246,243,236,0.6);}
-  .track-demo{
-    margin-top:44px;background:var(--navy-2);border:1px solid var(--line);border-radius:16px;
-    padding:32px;display:grid;grid-template-columns:280px 1fr;gap:36px;align-items:center;
-  }
-  @media (max-width:800px){ .track-demo{grid-template-columns:1fr;} }
-  .track-demo-input{display:flex;flex-direction:column;gap:14px;}
-  .track-demo-input input{
-    background:var(--navy);border:1px solid rgba(246,243,236,0.25);color:var(--paper);
-    padding:12px 14px;border-radius:8px;font-size:0.9rem;font-family:'Inter',sans-serif;
-  }
-  .track-demo-input input::placeholder{color:rgba(246,243,236,0.4);}
+  .step h4{ font-size:15.5px; margin-bottom:8px; color:var(--navy);}
+  .step p{ font-size:13.5px; color:var(--slate);}
 
-  /* ---------- PRICING ---------- */
-  .pricing-grid{display:grid;grid-template-columns:1fr 1fr;gap:56px;align-items:start;}
-  @media (max-width:860px){ .pricing-grid{grid-template-columns:1fr;} }
-  table.weight-table{width:100%;border-collapse:collapse;font-size:0.92rem;}
-  table.weight-table th{
-    text-align:left;font-family:'Space Grotesk',sans-serif;font-weight:600;
-    padding:12px 14px;background:var(--navy);color:var(--paper);
+  /* Tracking mock */
+  .tracking{
+    background:var(--navy); border-radius:16px; padding:40px; color:var(--white);
+    display:grid; grid-template-columns:1fr 1fr; gap:40px; align-items:center;
   }
-  table.weight-table td{padding:13px 14px;border-bottom:1px solid var(--line-soft);}
-  table.weight-table tr:last-child td{border-bottom:none;}
-  table.weight-table tr:nth-child(even) td{background:#fbf4e6;}
-  .free-tag{background:var(--green);color:#fff;font-size:0.72rem;padding:2px 8px;border-radius:5px;margin-left:8px;font-weight:600;}
-  .promise-list{display:flex;flex-direction:column;gap:22px;}
-  .promise-item{display:flex;gap:16px;}
-  .promise-item .icon{width:26px;height:26px;flex-shrink:0;color:var(--amber-dim);margin-top:2px;}
-  .promise-item .tt{font-weight:600;margin-bottom:4px;}
-  .promise-item .dd{font-size:0.9rem;color:#4b5566;}
+  .tracking h3{ font-size:24px; margin-bottom:14px;}
+  .tracking p{ color:rgba(255,255,255,0.7); font-size:14.5px; margin-bottom:22px; max-width:400px;}
+  .tl-list{ display:flex; flex-direction:column; gap:0;}
+  .tl-item{ display:flex; gap:14px; padding-bottom:22px; position:relative;}
+  .tl-item:not(:last-child)::before{
+    content:""; position:absolute; left:8px; top:20px; bottom:0; width:1px; background:rgba(255,255,255,0.15);
+  }
+  .tl-dot{ width:17px; height:17px; border-radius:50%; flex:none; margin-top:2px;}
+  .tl-dot.done{ background:var(--amber);}
+  .tl-dot.pending{ background:transparent; border:2px solid rgba(255,255,255,0.3);}
+  .tl-item h5{ font-size:14px; margin-bottom:3px;}
+  .tl-item span{ font-size:12.5px; color:rgba(255,255,255,0.55);}
 
-  /* ---------- ABOUT ---------- */
-  .about-section{background:#fff;}
-  .about-grid{display:grid;grid-template-columns:1fr 1fr;gap:64px;align-items:flex-start;}
-  @media (max-width:860px){ .about-grid{grid-template-columns:1fr;gap:36px;} }
-  .about-grid h2{font-size:clamp(1.6rem,2.6vw,2.1rem);margin-bottom:18px;}
-  .about-grid p{color:#3d4657;margin-bottom:16px;font-size:1rem;}
-  .about-grid p.emph{
-    font-weight:600;color:var(--navy);
-    border-left:3px solid var(--amber);padding-left:16px;
+  /* Pricing note */
+  .pricing-note{
+    background:#FBF3E2; border:1px solid #EAD9AE; border-radius:12px; padding:26px 28px;
+    display:flex; gap:18px; align-items:flex-start; margin-top:40px;
   }
-  .reward-card{
-    background:var(--navy);color:var(--paper);border-radius:16px;padding:32px;
-  }
-  .reward-card .figure{font-family:'Space Grotesk',sans-serif;font-size:2.4rem;color:var(--amber);margin-bottom:6px;}
-  .reward-card .cap{font-size:0.85rem;color:rgba(246,243,236,0.65);margin-bottom:20px;}
-  .reward-card p{font-size:0.92rem;color:rgba(246,243,236,0.82);margin-bottom:0;}
-  .about-feat-list{margin-top:26px;display:flex;flex-direction:column;gap:14px;}
-  .about-feat{display:flex;gap:12px;align-items:flex-start;font-size:0.92rem;color:#3d4657;}
-  .about-feat svg{flex-shrink:0;margin-top:2px;color:var(--green);}
+  .pricing-note .ic{ width:30px; flex:none; margin-top:2px;}
+  .pricing-note h4{ font-size:15.5px; color:var(--navy); margin-bottom:6px;}
+  .pricing-note p{ font-size:13.5px; color:var(--slate); line-height:1.55;}
 
-  /* ---------- FOOTER ---------- */
-  footer{background:var(--navy);color:rgba(246,243,236,0.7);padding:56px 0 28px;}
-  .foot-grid{display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:40px;margin-bottom:40px;}
-  @media (max-width:800px){ .foot-grid{grid-template-columns:1fr 1fr;} }
-  .foot-grid h4{color:var(--paper);font-size:0.85rem;margin-bottom:16px;font-family:'Space Grotesk',sans-serif;}
-  .foot-grid ul{list-style:none;display:flex;flex-direction:column;gap:10px;font-size:0.86rem;}
-  .foot-grid ul a:hover{color:var(--amber);}
+  /* Payment */
+  .pay-grid{ display:grid; grid-template-columns:repeat(3,1fr); gap:16px;}
+  .pay-card{
+    background:var(--white); border:1px solid var(--line); border-radius:12px; padding:20px; text-align:center;
+  }
+  .pay-card .logo{ height:30px; display:flex; align-items:center; justify-content:center; margin-bottom:10px; font-weight:700; font-family:'Space Grotesk'; font-size:15px;}
+  .pay-card p{ font-size:12px; color:var(--slate);}
+  .pay-note{ font-size:12.5px; color:var(--slate); margin-top:18px; text-align:center;}
+
+  /* About */
+  .about{ background:var(--white); border-top:1px solid var(--line); border-bottom:1px solid var(--line);}
+  .about .wrap{ display:grid; grid-template-columns:0.9fr 1.1fr; gap:56px; align-items:flex-start;}
+  .about h2{ font-size:28px; color:var(--navy); margin-bottom:16px;}
+  .about-highlight{
+    background:var(--navy); color:var(--white); border-radius:14px; padding:28px; margin-top:22px;
+  }
+  .about-highlight h4{ color:var(--amber); font-size:15px; margin-bottom:10px;}
+  .about-highlight p{ font-size:14px; color:rgba(255,255,255,0.8); line-height:1.6;}
+  .about-body p{ font-size:14.5px; color:var(--slate); margin-bottom:16px; line-height:1.65;}
+  .reward-box{
+    display:flex; gap:14px; align-items:flex-start; background:#FBF3E2; border:1px solid #EAD9AE;
+    border-radius:10px; padding:18px 20px; margin-top:8px;
+  }
+  .reward-box strong{ color:var(--navy);}
+
+  /* FAQ */
+  .faq-item{
+    border-bottom:1px solid var(--line); padding:20px 0; cursor:pointer;
+  }
+  .faq-q{ display:flex; justify-content:space-between; align-items:center; font-weight:600; font-size:15px; color:var(--navy);}
+  .faq-a{ font-size:13.5px; color:var(--slate); margin-top:10px; max-width:640px; display:none; line-height:1.6;}
+  .faq-item.open .faq-a{ display:block;}
+  .faq-item.open .chev{ transform:rotate(45deg);}
+  .chev{ transition:transform .15s; font-size:20px; color:var(--amber); font-weight:400;}
+
+  /* Footer */
+  footer{ background:var(--navy); color:rgba(255,255,255,0.7); padding:50px 0 24px;}
+  .foot-grid{ display:grid; grid-template-columns:1.4fr 1fr 1fr 1fr; gap:32px; margin-bottom:34px;}
+  .foot-grid h5{ color:var(--white); font-size:14px; margin-bottom:14px;}
+  .foot-grid li{ font-size:13px; margin-bottom:9px;}
+  .foot-grid li a:hover{ color:var(--amber);}
+  .foot-brand p{ font-size:13px; max-width:280px; margin-top:12px; line-height:1.6;}
   .foot-bottom{
-    border-top:1px solid var(--line);padding-top:24px;
-    display:flex;justify-content:space-between;font-size:0.78rem;flex-wrap:wrap;gap:12px;
+    border-top:1px solid rgba(255,255,255,0.1); padding-top:20px; display:flex; justify-content:space-between;
+    font-size:12.5px; flex-wrap:wrap; gap:10px;
+  }
+
+  /* Mobile bottom nav (mirrors the reference screenshots) */
+  .mobile-nav{ display:none;}
+
+  @media (max-width: 880px){
+    .hero .wrap{ grid-template-columns:1fr;}
+    .hero h1{ font-size:32px;}
+    .trustbar .wrap{ grid-template-columns:repeat(2,1fr);}
+    .cat-grid{ grid-template-columns:repeat(2,1fr);}
+    .step-grid{ grid-template-columns:repeat(2,1fr); gap:28px;}
+    .step:not(:last-child)::after{ display:none;}
+    .tracking{ grid-template-columns:1fr;}
+    .pay-grid{ grid-template-columns:repeat(2,1fr);}
+    .about .wrap{ grid-template-columns:1fr;}
+    .foot-grid{ grid-template-columns:1fr 1fr;}
+    .search{ display:none;}
+    .nav-actions span.txt{ display:none;}
+    body{ padding-bottom:64px;}
+    .mobile-nav{
+      display:flex; position:fixed; bottom:0; left:0; right:0; background:var(--white);
+      border-top:1px solid var(--line); justify-content:space-around; padding:10px 0; z-index:60;
+    }
+    .mobile-nav a{ display:flex; flex-direction:column; align-items:center; gap:4px; font-size:11px; color:var(--slate);}
+    .mobile-nav a.active{ color:var(--amber-deep); font-weight:600;}
   }
 </style>
 </head>
 <body>
 
 <header>
-  <div class="navbar">
-    <a href="#top" class="brand">
-      <svg class="brand-mark" viewBox="0 0 40 40" fill="none">
-        <circle cx="20" cy="20" r="19" stroke="#34D9C4" stroke-width="1.4"/>
-        <path d="M6 20 L34 20" stroke="#34D9C4" stroke-width="1.2" stroke-dasharray="1 3.4"/>
-        <circle cx="9" cy="20" r="3.4" fill="#F2A93B"/>
-        <circle cx="31" cy="20" r="3.4" fill="#F6F3EC"/>
-        <path d="M13 20 L27 20" stroke="#F2A93B" stroke-width="1.6"/>
-      </svg>
-      <span class="brand-text">
-        <span class="name">Bangladesh Gadget</span>
-        <span class="tag">USA SOURCED · TRACKED HOME</span>
-      </span>
-    </a>
-    <nav class="links">
-      <a href="#catalog">Catalog</a>
-      <a href="#tracking">Track a shipment</a>
-      <a href="#pricing">Shipping &amp; pricing</a>
-      <a href="#about">About</a>
-    </nav>
-    <div class="nav-cta">
-      <a href="#tracking" class="btn btn-outline">Track order</a>
-      <a href="#catalog" class="btn btn-amber">Shop now</a>
+  <div class="wrap topbar">
+    <div class="brand"><span class="dot"></span>Bangladesh Gadget</div>
+    <div class="search">
+      <input type="text" placeholder="Search laptops, phones, smart watches...">
+      <button>Search</button>
     </div>
-    <button class="menu-toggle" aria-label="Menu">☰</button>
+    <div class="nav-actions">
+      <a href="#track" class="track-pill">Track Order</a>
+      <a href="#"><span class="txt">Cart (0)</span></a>
+      <a href="#"><span class="txt">Account</span></a>
+    </div>
+  </div>
+  <div class="subnav">
+    <div class="wrap">
+      <a href="#categories">Smartphones</a>
+      <a href="#categories">Laptops</a>
+      <a href="#categories">Smart Watches</a>
+      <a href="#categories">Audio</a>
+      <a href="#categories">Cameras</a>
+      <a href="#categories">Gaming</a>
+      <a href="#categories">Smart Home</a>
+      <a href="#how">How Shipping Works</a>
+      <a href="#about">About Us</a>
+    </div>
   </div>
 </header>
 
-<div id="top"></div>
-
-<!-- ================= HERO ================= -->
-<section class="hero" style="padding-top:88px;">
+<section class="hero">
   <div class="wrap">
-    <div class="hero-grid">
+    <div>
+      <div class="badge-guarantee">✓ Verified authentic — or receive ৳500,000</div>
+      <h1>Genuine gadgets, sourced in the USA, delivered to your door in Bangladesh.</h1>
+      <p class="lead">Every product ships direct from the United States. No counterfeits, no middlemen — just the item you ordered, tracked the whole way home.</p>
+      <div class="hero-cta">
+        <a href="#categories" class="btn btn-primary">Browse Gadgets</a>
+        <a href="#track" class="btn btn-ghost">Track a Shipment</a>
+      </div>
+      <div class="hero-stats">
+        <div><strong>100%</strong><span>Authenticity guaranteed</span></div>
+        <div><strong>1st order</strong><span>Shipping fee waived</span></div>
+        <div><strong>7–35 days</strong><span>US to your doorstep</span></div>
+      </div>
+    </div>
+
+    <div class="route-card">
+      <div class="route-title">LIVE ROUTE PREVIEW</div>
+      <div class="route-line">
+        <svg viewBox="0 0 400 150">
+          <path d="M20,110 Q140,10 380,60" stroke="rgba(255,255,255,0.25)" stroke-width="2" fill="none" stroke-dasharray="6 6"/>
+          <path d="M20,110 Q140,10 240,45" stroke="#E2A63B" stroke-width="3" fill="none"/>
+          <circle cx="20" cy="110" r="6" fill="#E2A63B"/>
+          <circle cx="240" cy="45" r="7" fill="#ffffff"/>
+          <circle cx="380" cy="60" r="6" fill="rgba(255,255,255,0.35)"/>
+        </svg>
+      </div>
+      <div class="route-points">
+        <div>Los Angeles<span class="city">Warehouse</span></div>
+        <div>In transit<span class="city">Day 9 of 21</span></div>
+        <div>Dhaka<span class="city">Your address</span></div>
+      </div>
+      <div class="route-note">
+        <span>Order #BG-48213</span>
+        <span>Sync'd from courier feed</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="trustbar">
+  <div class="wrap">
+    <div class="trust-item">
+      <svg class="ic" viewBox="0 0 24 24" fill="none"><path d="M12 2L3 6v6c0 5 4 8.5 9 10 5-1.5 9-5 9-10V6l-9-4z" stroke="#E2A63B" stroke-width="1.6"/><path d="M8.5 12l2.5 2.5 4.5-5" stroke="#E2A63B" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      <div><h4>No counterfeits, guaranteed</h4><p>Prove otherwise and receive ৳500,000 — no exceptions.</p></div>
+    </div>
+    <div class="trust-item">
+      <svg class="ic" viewBox="0 0 24 24" fill="none"><path d="M3 12h18M3 12l4-4M3 12l4 4M21 12l-4-4M21 12l-4 4" stroke="#E2A63B" stroke-width="1.6" stroke-linecap="round"/></svg>
+      <div><h4>Door-to-door, handled fully</h4><p>We manage the entire US-to-Bangladesh journey ourselves.</p></div>
+    </div>
+    <div class="trust-item">
+      <svg class="ic" viewBox="0 0 24 24" fill="none"><rect x="3" y="7" width="18" height="12" rx="2" stroke="#E2A63B" stroke-width="1.6"/><path d="M3 10h18" stroke="#E2A63B" stroke-width="1.6"/></svg>
+      <div><h4>Weight-based pricing</h4><p>Every listing shows product cost and shipping by weight, upfront.</p></div>
+    </div>
+    <div class="trust-item">
+      <svg class="ic" viewBox="0 0 24 24" fill="none"><path d="M12 22s8-4.5 8-11V5l-8-3-8 3v6c0 6.5 8 11 8 11z" stroke="#E2A63B" stroke-width="1.6"/></svg>
+      <div><h4>Free shipping, first order</h4><p>New customers ship their first item on us.</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="categories">
+  <div class="wrap">
+    <div class="section-head">
       <div>
-        <div class="eyebrow-badge">
-          <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><circle cx="7" cy="7" r="6" stroke="currentColor" stroke-width="1.3"/><path d="M7 4v3.3l2.2 1.3" stroke="currentColor" stroke-width="1.3" stroke-linecap="round"/></svg>
-          Every order is trackable, USA to your door
-        </div>
-        <h1>Genuine gadgets, bought in the USA, delivered to your doorstep in Bangladesh.</h1>
-        <p class="lead">We buy directly from US retailers and manufacturers, handle every step of the journey — customs included — and hand you a live tracking link the moment your order is confirmed.</p>
-        <div class="hero-actions">
-          <a href="#catalog" class="btn btn-amber">Browse the catalog</a>
-          <a href="#tracking" class="btn btn-outline">See how tracking works</a>
-        </div>
-      </div>
-
-      <div class="route-card">
-        <div class="route-head">
-          <span class="label">Sample shipment</span>
-          <span class="id">BG-7741-DHK</span>
-        </div>
-        <div class="route-line">
-          <div class="route-track"><div class="fill"></div></div>
-          <div class="route-points">
-            <div class="route-point done"><div class="dot"></div><div class="stage">Ordered<br>&amp; confirmed</div></div>
-            <div class="route-point done"><div class="dot"></div><div class="stage">Packed,<br>US warehouse</div></div>
-            <div class="route-point active"><div class="dot"></div><div class="stage">In transit<br>to Dhaka</div></div>
-            <div class="route-point"><div class="dot"></div><div class="stage">Customs<br>clearance</div></div>
-            <div class="route-point"><div class="dot"></div><div class="stage">Out for<br>delivery</div></div>
-          </div>
-        </div>
-        <div class="route-foot">
-          <span>Origin: <b>Newark, NJ</b></span>
-          <span>ETA: <b>6 days</b></span>
-        </div>
+        <h2>Shop by category</h2>
+        <p>Every gadget below ships from our US sourcing partners — never a local reseller.</p>
       </div>
     </div>
-  </div>
-
-  <div class="hero-strip">
-    <div class="wrap-cell cell">
-      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#34D9C4" stroke-width="1.6"><path d="M12 2 3 7l9 5 9-5-9-5Z"/><path d="M3 12l9 5 9-5"/><path d="M3 17l9 5 9-5"/></svg>
-      <div><div class="t">Verified authentic, or ৳500,000</div><div class="d">Prove we've sold a counterfeit item and we'll pay the reward — no exceptions.</div></div>
-    </div>
-    <div class="wrap-cell cell">
-      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#F2A93B" stroke-width="1.6"><path d="M20 12H4"/><path d="M10 6l-6 6 6 6"/></svg>
-      <div><div class="t">Free shipping, first order</div><div class="d">We cover the delivery cost on the first item every customer brings home.</div></div>
-    </div>
-    <div class="wrap-cell cell">
-      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#F6F3EC" stroke-width="1.6"><path d="M3 3v18h18"/><path d="M7 15l3-3 3 3 5-6"/></svg>
-      <div><div class="t">Priced by weight, shown upfront</div><div class="d">Every listing states its shipping weight and cost before you check out.</div></div>
+    <div class="cat-grid">
+      <div class="cat-card"><svg class="cat-ic" viewBox="0 0 24 24" fill="none"><rect x="7" y="2" width="10" height="20" rx="2" stroke="#0E1B33" stroke-width="1.5"/><circle cx="12" cy="18" r="0.8" fill="#0E1B33"/></svg><h3>Smartphones</h3><span>Unlocked, factory-sealed</span></div>
+      <div class="cat-card"><svg class="cat-ic" viewBox="0 0 24 24" fill="none"><rect x="3" y="4" width="18" height="12" rx="1.5" stroke="#0E1B33" stroke-width="1.5"/><path d="M2 19h20" stroke="#0E1B33" stroke-width="1.5" stroke-linecap="round"/></svg><h3>Laptops</h3><span>Latest generation chips</span></div>
+      <div class="cat-card"><svg class="cat-ic" viewBox="0 0 24 24" fill="none"><rect x="8" y="3" width="8" height="8" rx="2" stroke="#0E1B33" stroke-width="1.5"/><path d="M9 11v3a3 3 0 0 0 6 0v-3" stroke="#0E1B33" stroke-width="1.5"/></svg><h3>Smart Watches</h3><span>Fitness & health tracking</span></div>
+      <div class="cat-card"><svg class="cat-ic" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="3.2" stroke="#0E1B33" stroke-width="1.5"/><path d="M4 8V6a2 2 0 0 1 2-2h2M18 4h2a2 2 0 0 1 2 2v2M20 16v2a2 2 0 0 1-2 2h-2M6 20H4a2 2 0 0 1-2-2v-2" stroke="#0E1B33" stroke-width="1.5" stroke-linecap="round"/></svg><h3>Cameras</h3><span>Mirrorless & action cams</span></div>
+      <div class="cat-card"><svg class="cat-ic" viewBox="0 0 24 24" fill="none"><path d="M4 15c0-4 3.5-7 8-7s8 3 8 7" stroke="#0E1B33" stroke-width="1.5" stroke-linecap="round"/><rect x="2" y="15" width="4" height="4" rx="1" stroke="#0E1B33" stroke-width="1.5"/><rect x="18" y="15" width="4" height="4" rx="1" stroke="#0E1B33" stroke-width="1.5"/></svg><h3>Audio</h3><span>Headphones & speakers</span></div>
+      <div class="cat-card"><svg class="cat-ic" viewBox="0 0 24 24" fill="none"><rect x="2" y="6" width="20" height="12" rx="2" stroke="#0E1B33" stroke-width="1.5"/><circle cx="8" cy="12" r="1.6" fill="#0E1B33"/><circle cx="16" cy="12" r="1.6" fill="#0E1B33"/></svg><h3>Gaming</h3><span>Consoles & accessories</span></div>
+      <div class="cat-card"><svg class="cat-ic" viewBox="0 0 24 24" fill="none"><path d="M9 21h6M12 3a5 5 0 0 0-3 9c.6.5 1 1.2 1 2h4c0-.8.4-1.5 1-2a5 5 0 0 0-3-9z" stroke="#0E1B33" stroke-width="1.5"/></svg><h3>Smart Home</h3><span>Lighting, security, hubs</span></div>
+      <div class="cat-card"><svg class="cat-ic" viewBox="0 0 24 24" fill="none"><path d="M2 12l6-3 4 2 10-6-6 10-2-4-3 6z" stroke="#0E1B33" stroke-width="1.5" stroke-linejoin="round"/></svg><h3>Drones</h3><span>With shipping insurance</span></div>
     </div>
   </div>
 </section>
 
-<!-- ================= CATALOG ================= -->
-<section id="catalog">
+<section class="section steps" id="how">
   <div class="wrap">
-    <div class="sec-head">
-      <h2>Shop by category</h2>
-      <p>Everything is sourced from the same US supply chain — from a phone case to a full workstation setup.</p>
-    </div>
-  </div>
-  <div class="cat-grid">
-    <div class="cat-tile">
-      <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><rect x="7" y="2" width="10" height="20" rx="2"/><path d="M11 18h2"/></svg>
-      <div class="name">Smartphones &amp; Tablets</div>
-      <div class="count">Unlocked, US-market units</div>
-    </div>
-    <div class="cat-tile">
-      <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><rect x="3" y="4" width="18" height="12" rx="1.5"/><path d="M2 20h20"/></svg>
-      <div class="name">Laptops &amp; Computers</div>
-      <div class="count">Ultrabooks to workstations</div>
-    </div>
-    <div class="cat-tile">
-      <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><rect x="8" y="2" width="8" height="14" rx="4"/><path d="M12 16v5"/><path d="M9 21h6"/></svg>
-      <div class="name">Wearables &amp; Smartwatches</div>
-      <div class="count">Health, fitness &amp; notifications</div>
-    </div>
-    <div class="cat-tile">
-      <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><path d="M4 14a8 8 0 0 1 16 0"/><path d="M4 14v5a1 1 0 0 0 1 1h2v-6H5a1 1 0 0 0-1 1Z"/><path d="M20 14v5a1 1 0 0 1-1 1h-2v-6h2a1 1 0 0 1 1 1Z"/></svg>
-      <div class="name">Audio &amp; Headphones</div>
-      <div class="count">Earbuds, over-ear, speakers</div>
-    </div>
-    <div class="cat-tile">
-      <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><rect x="3" y="9" width="14" height="8" rx="1.5"/><path d="M17 12l4-2.5v6L17 13"/></svg>
-      <div class="name">Cameras &amp; Drones</div>
-      <div class="count">Action cams to gimbals</div>
-    </div>
-    <div class="cat-tile">
-      <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><rect x="2" y="6" width="20" height="12" rx="2"/><path d="M8 10v4"/><path d="M6 12h4"/><circle cx="16" cy="9.5" r="1"/><circle cx="18.5" cy="12" r="1"/></svg>
-      <div class="name">Gaming</div>
-      <div class="count">Consoles, controllers, peripherals</div>
-    </div>
-    <div class="cat-tile">
-      <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><rect x="4" y="2" width="9" height="15" rx="1.5"/><rect x="16" y="7" width="6" height="10" rx="1.5"/></svg>
-      <div class="name">Phone Accessories</div>
-      <div class="count">Cases, chargers, mounts</div>
-    </div>
-    <div class="cat-tile">
-      <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><path d="M9 21V9l3-6 3 6v12"/><path d="M5 21h14"/></svg>
-      <div class="name">Smart Home</div>
-      <div class="count">Lighting, security, hubs</div>
-    </div>
-    <div class="cat-tile">
-      <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><rect x="2" y="4" width="20" height="13" rx="1.5"/><path d="M9 21h6"/><path d="M12 17v4"/></svg>
-      <div class="name">TV &amp; Entertainment</div>
-      <div class="count">Streaming boxes, monitors</div>
-    </div>
-    <div class="cat-tile">
-      <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><path d="M6 9V5a2 2 0 0 1 2-2h3l1 2h4a2 2 0 0 1 2 2v2"/><rect x="4" y="9" width="16" height="11" rx="2"/></svg>
-      <div class="name">Fitness Tech</div>
-      <div class="count">Trackers, smart scales</div>
-    </div>
-    <div class="cat-tile">
-      <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><rect x="3" y="5" width="18" height="10" rx="1.5"/><path d="M7 19h10"/><path d="M9 15v4"/><path d="M15 15v4"/></svg>
-      <div class="name">Computer Accessories</div>
-      <div class="count">Keyboards, mice, hubs</div>
-    </div>
-    <div class="cat-tile">
-      <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><rect x="7" y="7" width="10" height="14" rx="1.5"/><path d="M10 3h4v4h-4Z"/></svg>
-      <div class="name">Power &amp; Charging</div>
-      <div class="count">Power banks, GaN chargers</div>
-    </div>
-  </div>
-</section>
-
-<!-- ================= TRACKING ================= -->
-<section id="tracking" class="track-section">
-  <div class="wrap">
-    <div class="sec-head">
-      <h2>Track your gadget from a US warehouse to your door</h2>
-      <p>Once your order is confirmed, we open a shipment record and update it at every real checkpoint — you never have to guess where it is.</p>
-    </div>
-
-    <div class="track-steps">
-      <div class="track-step"><div class="num">01</div><div class="tt">Order confirmed</div><div class="dd">You confirm the order and payment method.</div></div>
-      <div class="track-step"><div class="num">02</div><div class="tt">Purchased in the US</div><div class="dd">Our team buys the item from the source retailer.</div></div>
-      <div class="track-step"><div class="num">03</div><div class="tt">Packed &amp; weighed</div><div class="dd">Weight is recorded — this sets your shipping cost.</div></div>
-      <div class="track-step"><div class="num">04</div><div class="tt">In transit</div><div class="dd">Flown from the US toward Dhaka.</div></div>
-      <div class="track-step"><div class="num">05</div><div class="tt">Customs clearance</div><div class="dd">We handle documentation and clearance.</div></div>
-      <div class="track-step"><div class="num">06</div><div class="tt">Delivered home</div><div class="dd">Handed to you at your address in Bangladesh.</div></div>
-    </div>
-
-    <div class="track-demo">
-      <div class="track-demo-input">
-        <label style="font-size:0.8rem;color:rgba(246,243,236,0.6);">Have an order number?</label>
-        <input type="text" placeholder="e.g. BG-7741-DHK" id="trackInput">
-        <button class="btn btn-amber" style="justify-content:center;" onclick="runDemo()">Check status</button>
-      </div>
+    <div class="section-head">
       <div>
-        <p style="color:rgba(246,243,236,0.75);font-size:0.92rem;margin-bottom:14px;">This is a preview of the tracker your customers will see once it's wired to your logistics system — each dot lights up as your fulfillment team logs a checkpoint.</p>
-        <div id="demoOutput" style="font-family:'Space Grotesk',sans-serif;color:var(--teal);font-size:0.9rem;"></div>
+        <h2>How an order reaches you</h2>
+        <p>The same four steps, every time — you only need to do the first one.</p>
+      </div>
+    </div>
+    <div class="step-grid">
+      <div class="step">
+        <div class="step-num">1</div>
+        <h4>You confirm the order</h4>
+        <p>Pick your gadget, confirm checkout, and pay through your preferred method.</p>
+      </div>
+      <div class="step">
+        <div class="step-num">2</div>
+        <h4>We buy & inspect it in the US</h4>
+        <p>Sourced from our US partners and checked for authenticity before it ships.</p>
+      </div>
+      <div class="step">
+        <div class="step-num">3</div>
+        <h4>It travels by air or sea</h4>
+        <p>Air freight in 7–14 days, or economy sea freight in 25–35 days — your choice at checkout.</p>
+      </div>
+      <div class="step">
+        <div class="step-num">4</div>
+        <h4>We deliver it to your home</h4>
+        <p>No customs pickup, no courier office. It arrives at your door in Bangladesh.</p>
       </div>
     </div>
   </div>
 </section>
 
-<!-- ================= PRICING ================= -->
-<section id="pricing">
+<section class="section" id="track">
   <div class="wrap">
-    <div class="sec-head">
-      <h2>Shipping &amp; pricing, shown before you pay</h2>
-      <p>Import shipping is billed by weight, not guesswork — every product page states the exact bracket it falls into.</p>
-    </div>
-    <div class="pricing-grid">
-      <table class="weight-table">
-        <tr><th>Package weight</th><th>Shipping cost</th></tr>
-        <tr><td>Up to 0.5 kg <span style="color:#4b5566;">(earbuds, cables, small accessories)</span></td><td>৳450 <span class="free-tag">FREE on 1st order</span></td></tr>
-        <tr><td>0.5 kg – 1 kg <span style="color:#4b5566;">(phones, watches, chargers)</span></td><td>৳850 <span class="free-tag">FREE on 1st order</span></td></tr>
-        <tr><td>1 kg – 2.5 kg <span style="color:#4b5566;">(tablets, cameras, small laptops)</span></td><td>৳1,650</td></tr>
-        <tr><td>2.5 kg – 5 kg <span style="color:#4b5566;">(laptops, monitors)</span></td><td>৳2,900</td></tr>
-        <tr><td>Over 5 kg</td><td>Quoted at checkout, before payment</td></tr>
-      </table>
-      <div class="promise-list">
-        <div class="promise-item">
-          <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="9"/><path d="M8.5 12l2.5 2.5L16 9"/></svg>
-          <div><div class="tt">No markup surprises</div><div class="dd">Because these are imported goods, product prices run slightly above local retail — the shipping line item is separate and calculated by weight, not hidden inside the price.</div></div>
-        </div>
-        <div class="promise-item">
-          <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M3 12h18"/><path d="M12 3v18"/></svg>
-          <div><div class="tt">First order, shipping's on us</div><div class="dd">The shipping cost on your very first order is covered by Bangladesh Gadget, in full.</div></div>
-        </div>
-        <div class="promise-item">
-          <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="4" y="4" width="16" height="16" rx="2"/><path d="M4 10h16"/></svg>
-          <div><div class="tt">Cash on delivery available</div><div class="dd">Pay online in advance, or pay the courier when your gadget arrives.</div></div>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ================= ABOUT ================= -->
-<section id="about" class="about-section">
-  <div class="wrap">
-    <div class="about-grid">
+    <div class="tracking">
       <div>
-        <h2>About Bangladesh Gadget</h2>
-        <p>Bangladesh Gadget exists to bring genuine, US-market electronics to customers in Bangladesh without the usual grey-market guesswork. Every product listed is sourced directly from United States retailers and manufacturers — never from unverified resellers.</p>
-        <p class="emph">All you need to do is confirm your order — from that moment, we handle sourcing in the US, international shipping, customs clearance, and final delivery to your doorstep in Bangladesh.</p>
-        <p>Because we manage the entire chain ourselves, we can give you a live shipment record instead of a vague delivery estimate, and we can stand behind every item with an authenticity guarantee backed by a real reward.</p>
-        <div class="about-feat-list">
-          <div class="about-feat">
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6 9 17l-5-5"/></svg>
-            24/7 customer support over chat and phone
-          </div>
-          <div class="about-feat">
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6 9 17l-5-5"/></svg>
-            Manufacturer warranty support handled locally
-          </div>
-          <div class="about-feat">
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6 9 17l-5-5"/></svg>
-            7-day return window from the day of delivery
-          </div>
-          <div class="about-feat">
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6 9 17l-5-5"/></svg>
-            Secure payments, plus cash-on-delivery
-          </div>
-        </div>
+        <h3>Track your gadget, from a US warehouse to your street</h3>
+        <p>Every order gets a tracking ID the moment it's confirmed. Watch it move through each stage without calling anyone.</p>
+        <a href="#" class="btn btn-primary">Open Order Tracker</a>
       </div>
-      <div class="reward-card">
-        <div class="figure">৳500,000</div>
-        <div class="cap">Standing authenticity reward</div>
-        <p>If anyone can prove that Bangladesh Gadget has sold a counterfeit product, we will pay them ৳500,000 Taka. We source only from verified United States retailers and manufacturers — no exceptions, no grey imports.</p>
+      <div class="tl-list">
+        <div class="tl-item"><div class="tl-dot done"></div><div><h5>Order confirmed</h5><span>Dhaka, Bangladesh — Day 0</span></div></div>
+        <div class="tl-item"><div class="tl-dot done"></div><div><h5>Purchased & verified in the US</h5><span>Los Angeles warehouse — Day 2</span></div></div>
+        <div class="tl-item"><div class="tl-dot done"></div><div><h5>Departed on air freight</h5><span>In transit — Day 9</span></div></div>
+        <div class="tl-item"><div class="tl-dot pending"></div><div><h5>Arriving at Dhaka customs</h5><span>Estimated — Day 12</span></div></div>
+        <div class="tl-item"><div class="tl-dot pending"></div><div><h5>Out for home delivery</h5><span>Estimated — Day 14</span></div></div>
       </div>
+    </div>
+
+    <div class="pricing-note">
+      <svg class="ic" viewBox="0 0 24 24" fill="none"><rect x="3" y="7" width="18" height="12" rx="2" stroke="#C88A1F" stroke-width="1.6"/><path d="M3 10h18" stroke="#C88A1F" stroke-width="1.6"/></svg>
+      <div>
+        <h4>Why pricing looks different from local shops</h4>
+        <p>Because every item is imported individually, each listing shows a product price plus a shipping charge calculated from its weight. Heavier items (laptops, monitors) cost more to fly or ship than light ones (earbuds, cables) — the breakdown is shown before you pay, with no hidden fees added later.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section" style="background:var(--white); border-top:1px solid var(--line); border-bottom:1px solid var(--line);">
+  <div class="wrap">
+    <div class="section-head">
+      <div>
+        <h2>Ways to pay</h2>
+        <p>Pay however is easiest — everything is processed securely at checkout.</p>
+      </div>
+    </div>
+    <div class="pay-grid">
+      <div class="pay-card"><div class="logo">bKash</div><p>Mobile banking</p></div>
+      <div class="pay-card"><div class="logo">Nagad</div><p>Mobile banking</p></div>
+      <div class="pay-card"><div class="logo">Rocket</div><p>Mobile banking</p></div>
+      <div class="pay-card"><div class="logo">Internet Banking</div><p>Any supported Bangladeshi bank</p></div>
+      <div class="pay-card"><div class="logo">VISA</div><p>Any issuing bank</p></div>
+      <div class="pay-card"><div class="logo">Mastercard</div><p>Any issuing bank</p></div>
+    </div>
+    <p class="pay-note">Card and banking details are handled by our payment partner and are never stored on our servers.</p>
+  </div>
+</section>
+
+<section class="section about" id="about">
+  <div class="wrap">
+    <div>
+      <h2>About Bangladesh Gadget</h2>
+      <div class="reward-box">
+        <span>🏆</span>
+        <p><strong>৳500,000 authenticity reward.</strong> If you can prove we've ever sold a counterfeit product, we'll pay it — no fine print.</p>
+      </div>
+      <div class="about-highlight">
+        <h4>All you have to do</h4>
+        <p>Confirm your order, and wait to receive it. We handle sourcing in the US, customs, freight, and last-mile delivery to your home — from start to finish.</p>
+      </div>
+    </div>
+    <div class="about-body">
+      <p>Bangladesh Gadget exists because buying electronics from overseas used to mean guesswork: unclear authenticity, unclear shipping costs, and no way to know where your package actually was. We built this to remove all three.</p>
+      <p>Every product we list is sourced directly from the United States — never from a reseller claiming to be "like new," never from a grey-market import chain. Because each item is bought and shipped individually, prices run a little higher than what you'd see from an unverified local seller, and shipping is priced by the weight of what you order rather than a flat rate. Both are shown clearly on every product page before you check out.</p>
+      <p>We also cover the shipping cost on your first order with us, because we'd rather you experience the process once before deciding it's worth trusting again.</p>
+      <p>From the moment you confirm an order, our team takes over: purchasing, authenticity checks, air or sea freight, customs clearance, and home delivery anywhere in Bangladesh. You don't need to visit a courier office, clear anything yourself, or chase updates — just track it from your phone and wait for the knock at your door.</p>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="wrap">
+    <div class="section-head"><div><h2>Common questions</h2></div></div>
+    <div class="faq-item">
+      <div class="faq-q">Why is a gadget here more expensive than the same one locally? <span class="chev">+</span></div>
+      <div class="faq-a">Because it's purchased new from a US source and shipped to you individually, the price reflects the product cost plus weight-based freight — both shown on the listing before checkout, rather than a bulk-imported local markup.</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q">How long does delivery actually take? <span class="chev">+</span></div>
+      <div class="faq-a">Air freight typically takes 7–14 days door to door. Economy sea freight (cargo ship) takes 25–35 days and costs less — you choose the option at checkout.</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q">Is the first-order free shipping automatic? <span class="chev">+</span></div>
+      <div class="faq-a">Yes — it's applied automatically at checkout on the first order placed by a new account, no code needed.</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q">What if I receive the wrong or a fake item? <span class="chev">+</span></div>
+      <div class="faq-a">Contact support with your order ID and photos. If a product is ever shown to be counterfeit, the ৳500,000 guarantee applies in full, in addition to a refund or replacement.</div>
     </div>
   </div>
 </section>
@@ -499,60 +489,59 @@
 <footer>
   <div class="wrap">
     <div class="foot-grid">
-      <div>
-        <div class="brand" style="margin-bottom:14px;">
-          <svg class="brand-mark" viewBox="0 0 40 40" fill="none">
-            <circle cx="20" cy="20" r="19" stroke="#34D9C4" stroke-width="1.4"/>
-            <path d="M6 20 L34 20" stroke="#34D9C4" stroke-width="1.2" stroke-dasharray="1 3.4"/>
-            <circle cx="9" cy="20" r="3.4" fill="#F2A93B"/>
-            <circle cx="31" cy="20" r="3.4" fill="#F6F3EC"/>
-            <path d="M13 20 L27 20" stroke="#F2A93B" stroke-width="1.6"/>
-          </svg>
-          <span class="brand-text"><span class="name">Bangladesh Gadget</span></span>
-        </div>
-        <p style="font-size:0.85rem;max-width:280px;">Genuine electronics, bought in the United States, tracked all the way to your door in Bangladesh.</p>
+      <div class="foot-brand">
+        <div class="brand" style="color:#fff;"><span class="dot"></span>Bangladesh Gadget</div>
+        <p>Genuine electronics, sourced in the United States and delivered to your door across Bangladesh.</p>
       </div>
       <div>
-        <h4>Shop</h4>
+        <h5>Shop</h5>
         <ul>
-          <li><a href="#catalog">All categories</a></li>
-          <li><a href="#pricing">Shipping &amp; pricing</a></li>
-          <li><a href="#tracking">Track an order</a></li>
+          <li><a href="#categories">Smartphones</a></li>
+          <li><a href="#categories">Laptops</a></li>
+          <li><a href="#categories">Audio</a></li>
+          <li><a href="#categories">Smart Home</a></li>
         </ul>
       </div>
       <div>
-        <h4>Company</h4>
+        <h5>Support</h5>
         <ul>
+          <li><a href="#track">Track an order</a></li>
+          <li><a href="#how">Shipping & delivery</a></li>
           <li><a href="#about">About us</a></li>
-          <li><a href="#">Authenticity guarantee</a></li>
-          <li><a href="#">Contact support</a></li>
+          <li><a href="#">Contact</a></li>
         </ul>
       </div>
       <div>
-        <h4>Contact</h4>
+        <h5>Legal</h5>
         <ul>
-          <li>Dhaka, Bangladesh</li>
-          <li>support@bangladeshgadget.com</li>
-          <li>+880 XX-XXXX-XXXX</li>
+          <li><a href="#">Terms of service</a></li>
+          <li><a href="#">Privacy policy</a></li>
+          <li><a href="#">Return policy</a></li>
         </ul>
       </div>
     </div>
     <div class="foot-bottom">
-      <span>© 2026 Bangladesh Gadget · bangladeshgadget.com</span>
-      <span>All products are genuine imports from the United States.</span>
+      <span>© 2026 Bangladesh Gadget. All rights reserved.</span>
+      <span>bangladeshgadget.com</span>
     </div>
   </div>
 </footer>
 
+<nav class="mobile-nav">
+  <a href="#categories" class="active">Categories</a>
+  <a href="#">Cart</a>
+  <a href="#track">Track</a>
+  <a href="#">Account</a>
+</nav>
+
 <script>
-function runDemo(){
-  const val = document.getElementById('trackInput').value.trim() || 'BG-7741-DHK';
-  const out = document.getElementById('demoOutput');
-  out.textContent = 'Looking up ' + val + ' ...';
-  setTimeout(()=>{
-    out.innerHTML = val + ' — <span style="color:#F2A93B;">In transit to Dhaka</span>, packed at US warehouse, ETA 6 days.';
-  }, 700);
-}
+  document.querySelectorAll('.faq-item').forEach(item=>{
+    item.addEventListener('click', ()=>{
+      const isOpen = item.classList.contains('open');
+      document.querySelectorAll('.faq-item').forEach(i=>i.classList.remove('open'));
+      if(!isOpen) item.classList.add('open');
+    });
+  });
 </script>
 
 </body>
